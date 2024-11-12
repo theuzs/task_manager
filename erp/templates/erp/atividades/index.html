@@ -1,0 +1,20 @@
+{% extends "erp/_layouts/base.html" %}
+
+{% block title %}Página Inicial das Atividades{% endblock %}
+
+{% block conteudo %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bem-vindo ao Sistema de Gerenciamento de Atividades</h5>
+                        <p>Aqui você pode criar, editar e excluir atividades.</p>
+                        <a href="{% url 'erp:cria_atividade' %}" class="btn btn-success">Criar Nova Atividade</a>
+                        <a href="{% url 'erp:lista_atividades' %}" class="btn btn-primary">Ver Atividades</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

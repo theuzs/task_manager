@@ -86,3 +86,39 @@ class Venda(models.Model):
     )
 
     objetos = models.Manager()
+
+
+# Novo modelo Atividade
+class Atividade(models.Model):
+    funcionario = models.ForeignKey(
+        'Funcionario',
+        on_delete=models.CASCADE,
+        related_name="atividades"
+    )
+
+    titulo = models.CharField(
+        max_length=100,
+        null=False,
+        blank=False
+    )
+
+    descricao = models.TextField(
+        null=True,
+        blank=True
+    )
+
+    data = models.DateField(
+        null=False,
+        blank=False
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=[('pendente', 'Pendente'), ('concluida', 'Concluída')],
+        default='pendente'
+    )
+
+    objetos = models.Manager()
+
+    def __str__(self):
+        return f"{self.titulo} - {self.funcionario.nome}"

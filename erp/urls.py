@@ -13,7 +13,7 @@ urlpatterns = [
     # GET /funcionarios/cadastrar
     path('funcionarios/cadastrar', views.CriaFuncionarioView.as_view(), name="cadastra_funcionario"),
 
-    # GET /funcionarios
+    # GET /funcionarios/lista
     path('funcionarios/lista', views.ListaFuncionariosView.as_view(), name="lista_funcionarios"),
 
     # GET/POST /funcionarios/{pk}
@@ -28,7 +28,7 @@ urlpatterns = [
     # GET /produtos/cadastrar
     path('produtos/cadastrar', views.CriaProdutoView.as_view(), name="cadastra_produto"),
 
-    # GET /produtos
+    # GET /produtos/lista
     path('produtos/lista', views.ListaProdutosView.as_view(), name="lista_produtos"),
 
     # GET/POST /produtos/{pk}
@@ -43,7 +43,7 @@ urlpatterns = [
     # GET /vendas/cadastrar
     path('vendas/cadastrar', views.CriaVendaView.as_view(), name="cadastra_venda"),
 
-    # GET /vendas
+    # GET /vendas/lista
     path('vendas/lista', views.ListaVendasView.as_view(), name="lista_vendas"),
 
     # GET/POST /vendas/{pk}
@@ -51,4 +51,20 @@ urlpatterns = [
 
     # GET/POST /vendas/excluir/{pk}
     path('vendas/excluir/<pk>', views.DeletaVendaView.as_view(), name="deleta_venda"),
+
+    # Atividades Routes
+    # GET /atividades
+    path('atividades/', views.ListaAtividadesView.as_view(), name="index_atividades"),
+
+    # GET /atividades/cadastrar
+    path('atividades/cadastrar', views.CriaAtividadeView.as_view(), name="cadastra_atividade"),
+
+    # GET /atividades/lista
+    path('atividades/lista', views.ListaAtividadesView.as_view(), name="lista_atividades"),
+
+    # GET/POST /atividades/{pk}
+    path('atividades/<pk>', views.AtualizaAtividadeView.as_view(), name="atualiza_atividade"),
+
+    # GET/POST /atividades/excluir/{pk}
+    path('atividades/excluir/<pk>', views.DeletaAtividadeView.as_view(), name="deleta_atividade"),
 ]

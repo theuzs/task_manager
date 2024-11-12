@@ -1,9 +1,8 @@
 from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
-from core.models import Funcionario, Produto, Venda
-from erp.forms import InsereFuncionarioForm, InsereProdutoForm, InsereVendaForm
-
+from core.models import Funcionario, Produto, Venda, Atividade  # Importando o modelo Atividade
+from erp.forms import InsereFuncionarioForm, InsereProdutoForm, InsereVendaForm, InsereAtividadeForm  # InsereAtividadeForm deve ser criado
 
 # PÁGINA PRINCIPAL
 # ----------------------------------------------
@@ -13,7 +12,6 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data()
-
         context['vendas'] = Venda.objetos.all()
         
         # Soma de vendas por funcionário
@@ -31,6 +29,37 @@ class HomeView(TemplateView):
         context['qtde_vendas'] = Venda.objetos.count()
 
         return context
+
+
+# VIEWS PARA ATIVIDADES
+# ----------------------------------------------
+
+class ListaAtividadesView(ListView):
+    template_name = "erp/atividades/lista.html"
+    model = Atividade
+    context_object_name = "atividades"
+
+
+class CriaAtividadeView(CreateView):
+    template_name = "erp/atividades/cria.html"
+    model = Atividade
+    form_class = InsereAtividadeForm  # Formulário para criar uma nova atividade
+    success_url = reverse_lazy("erp:lista_atividades")
+
+
+class AtualizaAtividadeView(UpdateView):
+    template_name = "erp/atividades/atualiza.html"
+    model = Atividade
+    fields = '__all__'
+    context_object_name = 'atividade'
+    success_url = reverse_lazy("erp:lista_atividades")
+
+
+class DeletaAtividadeView(DeleteView):
+    template_name = "erp/atividades/exclui.html"
+    model = Atividade
+    context_object_name = 'atividade'
+    success_url = reverse_lazy("erp:lista_atividades")
 
 
 # PÁGINA PRINCIPAL FUNCIONÁRIOS

@@ -1,4 +1,4 @@
-from core.models import Funcionario, Produto, Venda
+from core.models import Funcionario, Produto, Venda, Atividade
 from django import forms
 
 
@@ -67,3 +67,26 @@ class InsereVendaForm(forms.ModelForm):
             'funcionario',
             'produto'
         ]
+
+# FORMULÁRIO DE INCLUSÃO DE ATIVIDADES
+# -------------------------------------------
+
+class InsereAtividadeForm(forms.ModelForm):
+    class Meta:
+        model = Atividade
+        fields = [
+            'funcionario',
+            'titulo',
+            'descricao',
+            'data',
+            'status'
+        ]
+        widgets = {
+            'data': forms.DateInput(attrs={'type': 'date'}),
+            'status': forms.Select(choices=[('pendente', 'Pendente'), ('concluida', 'Concluída')]),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(InsereAtividadeForm, self).__init__(*args, **kwargs)
+        # Personalizações adicionais podem ser feitas aqui, como
+        # restringir a lista de funcionários disponíveis.

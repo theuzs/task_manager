@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 {% load static tempo_atual %}
 
 <head>
@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'erp/css/master.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'erp/css/aos.css' %}">
 
-    {% block styles %}{% endblock %} 
+    {% block styles %}{% endblock %}
 </head>
 
 <body>
@@ -30,7 +30,6 @@
             <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="45px" alt="GitHub Icon">
         </a>
         <a href="https://www.flaticon.com/free-icons/github" title="github icons"></a>
-        
         
         <button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -53,10 +52,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'erp:lista_vendas' %}">Vendas</a>
                 </li>
-            </ul>
-            <ul class="navbar-nav float-right">
+                <!-- Novo item de navegação para Atividades -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><b>Hora: </b>{% tempo_atual %}</a>
+                    <a class="nav-link" href="{% url 'erp:lista_atividades' %}">Atividades</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><b>Hora: </b><span id="horaAtual">{% tempo_atual %}</span></a>
                 </li>
             </ul>
         </div>
@@ -78,7 +81,20 @@
 <script src="{% static 'erp/js/scripts.js' %}"></script>
 
 <script type="application/javascript">
-    AOS.init();
+    // Atualiza a hora no navbar dinamicamente
+    document.addEventListener("DOMContentLoaded", function () {
+        function atualizaHora() {
+            var now = new Date();
+            var hours = String(now.getHours()).padStart(2, '0');
+            var minutes = String(now.getMinutes()).padStart(2, '0');
+            var seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('horaAtual').textContent = `Hora: ${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(atualizaHora, 1000);
+        atualizaHora(); // Atualiza imediatamente ao carregar
+    });
+
+    AOS.init();  // Inicializa animações
 </script>
 </body>
 </html>
