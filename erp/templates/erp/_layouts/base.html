@@ -78,6 +78,37 @@
         [data-aos="fade-in"].aos-animate {
             opacity: 1;
         }
+
+        /* Rodapé */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout geral da página para garantir que o rodapé fique fixado na parte inferior */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+        }
+
     </style>
 </head>
 
@@ -128,6 +159,12 @@
 <div class="content" data-aos="fade-in" data-aos-duration="1000">
     {% block conteudo %}{% endblock %}
 </div>
+
+<!-- Rodapé -->
+<footer>
+    <p>© 2024 Matheus Fagudnes. Todos os direitos reservados.</p>
+    <p><a href="https://github.com/matheusfagudnes" target="_blank">Visite meu GitHub</a></p>
+</footer>
 
 <!-- Scripts .js -->
 <script src="{% static 'erp/js/jquery.min.js' %}"></script>

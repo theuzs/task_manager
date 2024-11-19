@@ -60,13 +60,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Banco de dados
+# # Banco de dados
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # Indicando o banco de dados MySQL
+        'NAME': 'erp_db',  # Nome do seu banco de dados no MySQL
+        'USER': 'user',  # Nome de usuário do MySQL
+        'PASSWORD': '123456',  # Senha do seu usuário MySQL
+        'HOST': '127.0.0.1',  # Ou o IP do servidor MySQL, se não for local
+        'PORT': '3307',  # Porta padrão do MySQL
     }
 }
+
+
 
 # Validadores de senha
 AUTH_PASSWORD_VALIDATORS = [

@@ -114,7 +114,7 @@ class Atividade(models.Model):
 
     status = models.CharField(
         max_length=20,
-        choices=[('pendente', 'Pendente'), ('concluida', 'Concluída')],
+        choices=[ ('pendente', 'Pendente'), ('progresso', 'Progresso'), ('concluida', 'Concluída')],
         default='pendente'
     )
 

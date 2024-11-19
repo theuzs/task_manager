@@ -15,21 +15,23 @@
                             <table class="table table-light table-striped table-hover align-middle">
                                 <thead>
                                 <tr>
+                                    <th scope="col">Funcionário</th>
                                     <th scope="col">Nome da Atividade</th>
                                     <th scope="col">Data</th>
                                     <th scope="col">Descrição</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col" class="text-center">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for atividade in atividades %}
                                     <tr>
-                                        <td>{{ atividade.nome }}</td>
+                                        <td>{{ atividade.funcionario.nome }}</td>
+                                        <td>{{ atividade.titulo }}</td>
                                         <td>{{ atividade.data|date:"d/m/Y" }}</td>
                                         <td>{{ atividade.descricao }}</td>
+                                        <td>{{ atividade.status|capfirst }}</td>
                                         <td class="text-center">
-                                            <a href="{% url 'erp:atualiza_atividade' pk=atividade.id %}"
-                                               class="btn btn-primary btn-sm">Atualizar</a>
                                             <a href="{% url 'erp:deleta_atividade' pk=atividade.id %}" 
                                                class="btn btn-danger btn-sm">Excluir</a>
                                         </td>
@@ -44,6 +46,7 @@
                         {% endif %}
                         <hr/>
                         <div class="text-end">
+                            
                             <a href="{% url 'erp:cadastra_atividade' %}" class="btn btn-primary btn-sm">Cadastrar Atividade</a>
                         </div>
                     </div>
