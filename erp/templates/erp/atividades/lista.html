@@ -32,6 +32,8 @@
                                         <td>{{ atividade.descricao }}</td>
                                         <td>{{ atividade.status|capfirst }}</td>
                                         <td class="text-center">
+                                            <a href="{% url 'erp:atualiza_atividade' pk=atividade.id %}"
+                                               class="btn btn-primary btn-sm">Atualizar</a>
                                             <a href="{% url 'erp:deleta_atividade' pk=atividade.id %}" 
                                                class="btn btn-danger btn-sm">Excluir</a>
                                         </td>

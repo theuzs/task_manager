@@ -17,7 +17,7 @@
                             <!-- Nome da Atividade -->
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Nome</span>
-                                {% render_field form.nome class+="form-control" %}
+                                {% render_field form.titulo class+="form-control" %}
                             </div>
 
                             <!-- Descrição da Atividade -->
@@ -30,6 +30,12 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Data</span>
                                 {% render_field form.data class+="form-control" %}
+                            </div>
+
+                            <!-- Status da Atividade -->
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Status</span>
+                                {% render_field form.status class+="form-control" %}
                             </div>
 
                             <hr/>

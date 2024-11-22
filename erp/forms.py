@@ -78,7 +78,7 @@ class InsereAtividadeForm(forms.ModelForm):
             'funcionario',
             'titulo',
             'descricao',
-            'data',
+            'data', 
             'status'
         ]
         widgets = {
